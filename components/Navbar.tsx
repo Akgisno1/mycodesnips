@@ -8,7 +8,6 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -39,17 +38,18 @@ const Navbar = async () => {
         <div className="hidden md:flex">
           <NavLinks />
         </div>
-        {user?.name && (
-          <div className="flex items-center ml-4 flex-row gap-4">
+        <div className="flex items-center ml-4 flex-row gap-4">
+          {user?.name && (
             <Avatar>
               {user?.image && <AvatarImage src={user.image} />}
               <AvatarFallback>{user.name}</AvatarFallback>
             </Avatar>
-            <div className="hidden  md:flex">
-              <SignOut />
-            </div>
+          )}
+          <div className="hidden  md:flex">
+            <SignOut />
           </div>
-        )}
+        </div>
+
         <DarkModeToggle />
         <div className="md:hidden">
           <Sheet>

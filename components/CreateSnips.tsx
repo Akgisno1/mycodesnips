@@ -1,5 +1,4 @@
 "use client";
-
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import React, { useRef } from "react";
@@ -24,7 +23,7 @@ const CreateSnips = () => {
         .min(1, "Title is required")
         .max(50, "Must be 50 characters or less")
         .required("Title is required"),
-      content: Yup.string().required("content is required"),
+      content: Yup.string().required("Content is required"),
     }),
     onSubmit: async (values) => {
       const req = await fetch("/api/snip/create", {
@@ -34,9 +33,9 @@ const CreateSnips = () => {
       });
       if (req.ok) {
         router.push("/");
-        console.log("snip created");
+        console.log("Snip created");
       } else {
-        console.log("snip creation failed");
+        console.log("Snip creation failed");
       }
     },
   });
@@ -72,7 +71,7 @@ const CreateSnips = () => {
         <Editor
           apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
           onInit={(evt, editor) => {
-            //@ts-ignore
+            // @ts-expect-error: editorRef.current is typed as null initially and needs to be assigned to the editor instance
             editorRef.current = editor;
           }}
           init={{

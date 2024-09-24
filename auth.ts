@@ -64,6 +64,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }) {
       if (token?.sub && token?.role) {
         session.user.id = token.sub;
+        //@ts-ignore
         session.user.role = token.role;
       }
       return session;
@@ -71,6 +72,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
     async jwt({ token, user }) {
       if (user) {
+        //@ts-ignore
         token.role = user.role;
       }
       return token;

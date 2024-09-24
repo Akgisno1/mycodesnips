@@ -15,7 +15,7 @@ export async function SignOut() {
         >
           <button
             type="submit"
-            className="bg-purple-600 text-white px-4 py-1 rounded hover:bg-red-500 transition-all max-md:w-full "
+            className="bg-purple-600 text-white px-4 py-1 rounded hover:bg-red-500 transition-all "
           >
             Sign Out
           </button>
